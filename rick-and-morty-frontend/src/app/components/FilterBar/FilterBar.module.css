@@ -1,0 +1,41 @@
+/* FilterBar.module.css */
+.filterBarContainer {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; 
+
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+
+  }
+  
+  @media (min-width: 640px) {
+    .filterContainer {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .input,
+  .select {
+    padding: 0.6rem;  
+    border: 1px solid #2F873A; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #1a1b1f; 
+    color: #d1d5db; 
+    transition: outline 0.2s;
+  }
+  
+  .input:focus,
+  .select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #10b981; 
+  }
+  
+  .placeholder {
+    color: #9ca3af; 
+  }
+  

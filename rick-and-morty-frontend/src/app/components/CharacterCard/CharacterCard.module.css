@@ -1,0 +1,46 @@
+/* CharacterCard.module.css */
+.cardContainer {
+    max-width: 20rem; 
+    border-radius: 0.5rem; 
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
+    margin: 1rem; 
+    border: 1px solid #2F873A; 
+    transition: box-shadow 0.3s ease; 
+    background-color: #2f873b37;
+  }
+  
+  .cardContainer:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cardImage {
+    width: 100%; 
+    object-fit: cover;
+    
+  }
+  
+  .cardContent {
+    padding: 1.5rem; 
+    display: flex;
+    flex-direction: column;
+
+    background-size: cover;
+
+   
+    ;
+  }
+  
+  .cardTitle {
+    font-weight: bold; 
+    font-size: 1.25rem; 
+    margin-bottom: 0.5rem; 
+    color: #ffffff; 
+  
+  }
+  
+  .cardText {
+    color: #ffffff; 
+    font-size: 1rem; 
+  }
+  
