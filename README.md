@@ -1,51 +1,100 @@
-# Inffus - Teste para Desenvolvedor Web
+# Rick and Morty Characters API
 
-## Objetivo
+## Descrição
+Este projeto é uma API REST desenvolvida com Laravel que gerencia e fornece informações sobre personagens da série Rick and Morty. A aplicação permite listar, filtrar e visualizar detalhes dos personagens, com dados importados da [API oficial do Rick and Morty](https://rickandmortyapi.com/).
 
-O objetivo deste repositório é apresentar um teste para a contratação de um desenvolvedor Web. O candidato deverá consumir a API do Rick and Morty e desenvolver uma aplicação que atenda aos seguintes requisitos:
+## Funcionalidades
+- Listagem paginada de personagens
+- Filtragem por nome, status, espécie e gênero
+- Visualização detalhada de personagens individuais
+- Importação automatizada de dados da API oficial
+- Endpoints RESTful com suporte a CORS
 
-## Requisitos
+## Tecnologias Utilizadas
+- **PHP 8.2**
+- **Laravel 11.9**
+- **MySQL**
+- **PHPUnit** para testes
+- **Composer** para gerenciamento de dependências
 
-1. **API Laravel**
-  - Desenvolver uma API utilizando Laravel, a API deve consumir os dados da API Rick and Morty e salvar no banco de dados.
-  - Endpoints para consumo dos dados salvos com filtragem e paginação.
+## Estrutura do Projeto
+- **app/Http/Controllers/CharacterController.php**: Controlador principal para gerenciamento dos personagens
+- **app/Console/Commands/ImportRickAndMortyCharacters.php**: Comando para importação de dados
+- **app/Models/Character.php**: Modelo que representa um personagem
+- **database/migrations/**: Migrações do banco de dados
+- **tests/Feature/Http/Controllers/**: Testes automatizados
+- **routes/web.php**: Definição das rotas da API
 
-2. **Listagem e Filtragem de Personagens**
-   - Exibir lista de personagens da série Rick and Morty com informações simplificadas de forma páginada.
-   - Implementar filtros (exemplo: nome, status, espécie, gênero, etc.) para facilitar a busca pelos personagens.
-   - Criar uma página dedicada para cada personagem, mostrando informações detalhadas sobre o mesmo.
+## Instalação
+1. Clone o repositório:
+   ```bash
+   git clone [url-do-repositorio]
+   ```
+2. Instale as dependências:
+   ```bash
+   composer install
+   ```
+3. Configure o ambiente:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. Configure o banco de dados no arquivo **.env**:
+   ```dotenv
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=rick_and_morty_db
+   DB_USERNAME=seu_usuario
+   DB_PASSWORD=sua_senha
+   ```
+5. Execute as migrações:
+   ```bash
+   php artisan migrate
+   ```
+6. Importe os dados dos personagens:
+   ```bash
+   php artisan import:rickandmorty
+   ```
 
-3. **Tecnologias Utilizadas**
-   - Utilizar ReactJS/NextJS para o Front-End e Laravel para o Back-End.
+## Endpoints da API
+### `GET /api/characters`
+Lista os personagens com suporte a paginação e filtros.
 
-4. **README.MD**
-   - Adicione um readme.md com instruções para configurar e testar o ambiente local.
+**Parâmetros de query:**
+- `name`: Filtra por nome
+- `status`: Filtra por status
+- `species`: Filtra por espécie
+- `gender`: Filtra por gênero
+- `page`: Página desejada
 
-## Diferenciais
+### `GET /api/characters/{id}`
+Retorna os detalhes de um personagem específico.
 
-Os diferenciais serão levados em consideração, mas não são requisitos da aplicação:
-   - Funcionalidades a mais serão levadas como diferenciais, como por exemplo controle de cache.
-   - TypeScript.
-   - Tailwindcss.
-   - Testes automatizados, tanto para o Laravel quanto para o React.
-   - Banco de dados com MySql.
+### `GET /api/characters/filters`
+Retorna as opções disponíveis para filtros (status, species, gender).
 
-## Como Submeter o Teste
+## Testes
+Execute os testes com:
+```bash
+php artisan test
+```
 
-1. Faça um fork deste repositório.
-2. Crie uma nova branch para o seu desenvolvimento.
-3. Escreva um readme.md com instruções para configurar e testar o projeto em um ambiente local.
-4. Após concluir o desenvolvimento, crie um pull request com a sua branch.
-5. Prazo é de 72h (3 dias) após o recebimento do teste.
+## Configuração CORS
+O projeto está configurado para aceitar requisições de `http://localhost:3000`. Para alterar as origens permitidas, modifique o arquivo **cors.php**.
 
-## Recursos Úteis
+## Desenvolvimento
+Para iniciar o ambiente de desenvolvimento:
+```bash
+composer dev
+```
 
-- [Documentação da API do Rick and Morty](https://rickandmortyapi.com/documentation)
-- [Documentação do ReactJS](https://reactjs.org/docs/getting-started.html)
-- [Documentação do NextJS](https://nextjs.org/docs)
-- [Documentação do TypeScript](https://www.typescriptlang.org/docs/)
-- [Documentação do Laravel](https://laravel.com/)
+**Este comando inicia:**
+- Servidor Laravel
+- Fila de processamento
+- Monitoramento de logs
+- Servidor Vite para assets
 
-## Contato
+## Licença
+Este projeto está licenciado sob a licença MIT.
 
-Se você tiver alguma dúvida, entre em contato com Suporte através do e-mail suporte@inffus.com.br.
